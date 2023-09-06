@@ -11,14 +11,14 @@ const SafeArea = styled(SafeAreaView)`
 `;
 
 const SearchContainer = styled.View`
-  background-color: crimson;
-  padding: 16px;
+  background-color: ${(props) => props.theme.colors.brand.primary};
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 const RestaurantListContainer = styled.View`
   flex: 1;
-  padding: 16px;
-  background-color: tomato;
+  padding: ${(props) => props.theme.space[3]};
+  background-color: ${(props) => props.theme.colors.bg.secondary};
 `;
 
 const RestaurantsScreen = () => {

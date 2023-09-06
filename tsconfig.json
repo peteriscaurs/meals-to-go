@@ -3,5 +3,5 @@
   "compilerOptions": {
     "strict": true
   },
-  "include": ["src", "src/index.d.ts"]
+  "include": ["src", "src/index.d.ts", "src/styled.d.ts"]
 }

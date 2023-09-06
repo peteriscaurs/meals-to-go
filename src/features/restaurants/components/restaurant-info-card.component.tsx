@@ -4,7 +4,7 @@ import styled from "styled-components/native";
 import restaurant1 from "../../../../assets/restaurant1.jpg";
 
 const RestaurantCard = styled(Card)`
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 const RestaurantCardCover = styled(Card.Cover)`
@@ -13,7 +13,8 @@ const RestaurantCardCover = styled(Card.Cover)`
 `;
 
 const Title = styled.Text`
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
+  font-size: ${(props) => props.theme.fontSizes.title};
 `;
 
 interface RestaurantInfoProps {
