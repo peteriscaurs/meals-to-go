@@ -36,7 +36,12 @@ const RestaurantsScreen = () => {
         />
       </SearchContainer>
       <RestaurantListContainer>
-        <RestaurantInfoCard name="Terapija" address="Skolas iela 8" />
+        <RestaurantInfoCard
+          name="Stockpot"
+          address="Gertrudes iela 8"
+          rating={3.2}
+          isOpenNow={true}
+        />
       </RestaurantListContainer>
     </SafeArea>
   );

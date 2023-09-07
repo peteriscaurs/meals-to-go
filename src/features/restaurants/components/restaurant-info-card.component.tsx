@@ -1,22 +1,21 @@
+import {
+  Address,
+  Details,
+  Icon,
+  Info,
+  Rating,
+  RestaurantCard,
+  RestaurantCardCover,
+  Row,
+} from "./restaurant-info-card.styles";
+
+import Open from '"../../../../assets/open.js';
+import Star from '"../../../../assets/star.js';
 import React from "react";
-import { Card } from "react-native-paper";
-import styled from "styled-components/native";
-import restaurant1 from "../../../../assets/restaurant1.jpg";
-
-const RestaurantCard = styled(Card)`
-  background-color: ${(props) => props.theme.colors.bg.primary};
-`;
-
-const RestaurantCardCover = styled(Card.Cover)`
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-`;
-
-const Title = styled.Text`
-  padding: ${(props) => props.theme.space[3]};
-  font-size: ${(props) => props.theme.fontSizes.title};
-  font-family: ${(props) => props.theme.fonts.body};
-`;
+import { SvgXml } from "react-native-svg";
+import Restaurant1 from "../../../../assets/restaurant1.jpg";
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
 
 interface RestaurantInfoProps {
   name?: string;
@@ -31,19 +30,41 @@ interface RestaurantInfoProps {
 const RestaurantInfoCard = (restaurant: RestaurantInfoProps) => {
   const {
     name,
-    icon,
+    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
     photos,
     address,
     isOpenNow,
-    isClosedTemporarily,
+    isClosedTemporarily = true,
     rating,
   } = restaurant;
+
+  const ratingArray = Array.from(new Array(Math.floor(rating || 0)));
+
   return (
     <RestaurantCard>
-      <RestaurantCardCover source={restaurant1} />
-      <Title>
-        {name}: {address}
-      </Title>
+      <RestaurantCardCover source={Restaurant1} />
+      <Info>
+        <Text variant="title">{name}</Text>
+        <Row>
+          <Rating>
+            {ratingArray.map(() => (
+              <SvgXml xml={Star} width={20} height={20} />
+            ))}
+          </Rating>
+          <Details>
+            {isClosedTemporarily && (
+              <Text variant="error">CLOSED TEMPORARILY</Text>
+            )}
+            <Spacer position="left" size="large">
+              {isOpenNow && <SvgXml xml={Open} width={20} height={20} />}
+            </Spacer>
+            <Spacer position="left" size="large">
+              <Icon source={{ uri: icon }} />
+            </Spacer>
+          </Details>
+        </Row>
+        <Address>{address}</Address>
+      </Info>
     </RestaurantCard>
   );
 };
