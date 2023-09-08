@@ -39,10 +39,12 @@ const RestaurantsScreen = () => {
         />
       </SearchContainer>
       <RestaurantList
-        data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }]}
-        keyExtractor={(item) => item.name}
-        renderItem={() => (
-          <Spacer position="bottom" size="large">
+        data={[
+          { id: 1, name: "restaurant1" },
+          { id: 2, name: "restaurant2" },
+        ]}
+        renderItem={({ item }) => (
+          <Spacer position="bottom" size="large" key={item.id}>
             <RestaurantInfoCard
               name="Stockpot"
               address="Gertrudes iela 8"

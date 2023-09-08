@@ -1,3 +1,4 @@
+import React, { Key } from "react";
 import {
   Address,
   Details,
@@ -11,7 +12,6 @@ import {
 
 import Open from '"../../../../assets/open.js';
 import Star from '"../../../../assets/star.js';
-import React from "react";
 import { SvgXml } from "react-native-svg";
 import Restaurant1 from "../../../../assets/restaurant1.jpg";
 import { Spacer } from "../../../components/spacer/spacer.component";
@@ -38,7 +38,10 @@ const RestaurantInfoCard = (restaurant: RestaurantInfoProps) => {
     rating,
   } = restaurant;
 
-  const ratingArray = Array.from(new Array(Math.floor(rating || 0)));
+  const ratingArray = Array.from(
+    { length: rating as number },
+    (_, index) => index + 1,
+  );
 
   return (
     <RestaurantCard>
@@ -47,8 +50,8 @@ const RestaurantInfoCard = (restaurant: RestaurantInfoProps) => {
         <Text variant="title">{name}</Text>
         <Row>
           <Rating>
-            {ratingArray.map(() => (
-              <SvgXml xml={Star} width={20} height={20} />
+            {ratingArray.map((i) => (
+              <SvgXml xml={Star} width={20} height={20} key={i as Key} />
             ))}
           </Rating>
           <Details>
