@@ -6,3 +6,4 @@ declare module "*.svg";
 declare module "*.bmp";
 declare module "*.tiff";
 declare module "*.js";
+declare module "camelize";
