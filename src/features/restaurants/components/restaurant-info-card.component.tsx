@@ -30,7 +30,7 @@ interface RestaurantInfoProps {
 const RestaurantInfoCard = (restaurant: RestaurantInfoProps) => {
   const {
     name,
-    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
+    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png", // can throw an error
     photos,
     address,
     isOpenNow,
