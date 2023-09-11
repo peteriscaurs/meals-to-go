@@ -12,8 +12,8 @@ import {
 
 import Open from '"../../../../assets/open.js';
 import Star from '"../../../../assets/star.js';
+import { ImageSourcePropType } from "react-native";
 import { SvgXml } from "react-native-svg";
-import Restaurant1 from "../../../../assets/restaurant1.jpg";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
 
@@ -34,7 +34,6 @@ const RestaurantInfoCard = (restaurant: RestaurantInfoProps) => {
     photos,
     address,
     isOpenNow,
-    isClosedTemporarily = true,
     rating,
   } = restaurant;
 
@@ -45,7 +44,7 @@ const RestaurantInfoCard = (restaurant: RestaurantInfoProps) => {
 
   return (
     <RestaurantCard>
-      <RestaurantCardCover source={Restaurant1} />
+      <RestaurantCardCover source={photos as ImageSourcePropType} />
       <Info>
         <Text variant="title">{name}</Text>
         <Row>
@@ -55,11 +54,12 @@ const RestaurantInfoCard = (restaurant: RestaurantInfoProps) => {
             ))}
           </Rating>
           <Details>
-            {isClosedTemporarily && (
-              <Text variant="error">CLOSED TEMPORARILY</Text>
-            )}
             <Spacer position="left" size="large">
-              {isOpenNow && <SvgXml xml={Open} width={20} height={20} />}
+              {isOpenNow ? (
+                <SvgXml xml={Open} width={20} height={20} />
+              ) : (
+                <Text variant="error">CLOSED TEMPORARILY</Text>
+              )}
             </Spacer>
             <Spacer position="left" size="large">
               <Icon source={{ uri: icon }} />
