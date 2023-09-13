@@ -1,17 +1,13 @@
-interface Geometry {
-  location: {
-    lat: number;
-    lng: number;
-  };
+export interface Location {
+  lat: number;
+  lng: number;
+}
+
+export interface Geometry {
+  location: Location;
   viewport: {
-    northeast: {
-      lat: number;
-      lng: number;
-    };
-    southwest: {
-      lat: number;
-      lng: number;
-    };
+    northeast: Location;
+    southwest: Location;
   };
 }
 

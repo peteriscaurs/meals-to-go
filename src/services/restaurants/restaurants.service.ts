@@ -4,7 +4,7 @@ import { Place, PlaceApiResponse } from "./restaurants.types";
 import camelize from "camelize";
 
 export const restaurantsRequest = (
-  location = "37.7749295,-122.4194155",
+  location: string,
 ): Promise<PlaceApiResponse> => {
   return new Promise((resolve, reject) => {
     const mock = mocks[location as keyof typeof mocks];
